@@ -176,22 +176,20 @@ export const SizesPricingBreakdownMatrix = () => {
             <button
               type="button"
               onClick={() => setActiveTab('all')}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-                activeTab === 'all'
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${activeTab === 'all'
                   ? 'bg-neutral-950 text-white shadow-md'
                   : 'bg-white text-neutral-600 hover:text-neutral-950 border border-neutral-200'
-              }`}
+                }`}
             >
               All Options Side-by-Side
             </button>
             <button
               type="button"
               onClick={() => setActiveTab('unframed')}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
-                activeTab === 'unframed'
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${activeTab === 'unframed'
                   ? 'bg-neutral-950 text-white shadow-md'
                   : 'bg-white text-neutral-600 hover:text-neutral-950 border border-neutral-200'
-              }`}
+                }`}
             >
               <span>Unframed 300 GSM Prints</span>
               <span className="text-[10px] bg-amber-500/20 text-amber-800 px-1.5 py-0.5 rounded">From ₹30</span>
@@ -199,14 +197,13 @@ export const SizesPricingBreakdownMatrix = () => {
             <button
               type="button"
               onClick={() => setActiveTab('framed')}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${
-                activeTab === 'framed'
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 ${activeTab === 'framed'
                   ? 'bg-neutral-950 text-white shadow-md'
                   : 'bg-white text-neutral-600 hover:text-neutral-950 border border-neutral-200'
-              }`}
+                }`}
             >
               <span>Ready-to-Hang Framed Art</span>
-              <span className="text-[10px] bg-emerald-500/20 text-emerald-800 px-1.5 py-0.5 rounded">From ₹349</span>
+              <span className="text-[10px] bg-emerald-500/20 text-emerald-800 px-1.5 py-0.5 rounded">From ₹249</span>
             </button>
           </div>
         </div>

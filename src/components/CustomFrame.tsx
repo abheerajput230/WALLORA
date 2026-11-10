@@ -1,175 +1,175 @@
 "use client";
 import { useState, type ChangeEvent } from "react";
 const imageCategories = {
-Sports: [
-"https://i.pinimg.com/736x/06/c8/3e/06c83e4ee573251638b8ad16829e3f55.jpg",
-"https://i.pinimg.com/736x/84/6c/e6/846ce648412f882ee61df34324900d91.jpg",
-"https://i.pinimg.com/1200x/e8/4d/b4/e84db44722998f72ad72d57b950c0be1.jpg",
-"https://i.pinimg.com/1200x/21/2f/cf/212fcf03c37b32353c98945e280bb780.jpg",
-"https://i.pinimg.com/736x/f3/06/cd/f306cddc3120e87ff23375d67a629b4d.jpg",
-"https://i.pinimg.com/736x/61/b1/81/61b18155979e5474f281d19d5d526beb.jpg",
-"https://i.pinimg.com/736x/03/7c/99/037c99357287cb0f5435e31f13bb0f71.jpg",
-"https://i.pinimg.com/1200x/80/22/08/80220895dda1b14edd2efd51384c1f2f.jpg",
-"https://i.pinimg.com/736x/b6/74/a2/b674a2116e46fcfa7aadb4e1c19b0ab4.jpg",
-"https://i.pinimg.com/1200x/25/e6/7e/25e67e2c51d9e42a7340ddbbfc744760.jpg",
-"https://i.pinimg.com/736x/af/c0/c6/afc0c69a2fd88115c9e00c2302924c2a.jpg",
-"https://i.pinimg.com/736x/8e/16/3d/8e163def380f6dcf0cb92ab288a022be.jpg",
-"https://i.pinimg.com/736x/24/6f/c7/246fc7ceade578454acfd0232444df24.jpg",
-"https://i.pinimg.com/736x/ba/6b/68/ba6b68284a11c0851ab7f5b629a1fade.jpg",
-"https://i.pinimg.com/736x/2d/71/90/2d7190f62941f597fcda5a76f36f09e9.jpg",
-],
-MoviePosters: [
-"https://i.pinimg.com/736x/c8/54/cc/c854ccce48c3dbbeb16a834046bce01c.jpg",
-"https://i.pinimg.com/1200x/9d/2b/ae/9d2bae0d90fa6f420ada970fe9727bca.jpg",
-"https://i.pinimg.com/736x/91/c8/f8/91c8f89c8b117553ad44dd29e983dc28.jpg",
-"https://i.pinimg.com/736x/a0/39/47/a0394796b97678445deb1323f27ff97f.jpg",
-"https://i.pinimg.com/1200x/37/62/75/37627587496965efcc0ae42ac9dff525.jpg",
-"https://i.pinimg.com/736x/a3/b1/ac/a3b1acef9e1c6e6add483470789a94aa.jpg",
-],
-Gaming: [
-"https://i.pinimg.com/736x/4b/65/af/4b65af5f05779610c6b9f3786a699d89.jpg",
-"https://i.pinimg.com/736x/8b/90/ab/8b90ababc702e66b6d2056d1b7bfd972.jpg",
-"https://i.pinimg.com/736x/6a/ef/69/6aef69e54da790b881ced28a7dddec48.jpg",
-"https://i.pinimg.com/736x/7c/a8/ad/7ca8ad25c97b08ee64576dfd83d4f96c.jpg",
-"https://i.pinimg.com/736x/f9/e5/fc/f9e5fc8b02fcb8b359ea4f59e36cb696.jpg",
-],
-Marvel: [
-"https://i.pinimg.com/1200x/c8/54/cc/c854ccce48c3dbbeb16a834046bce01c.jpg",
-"https://i.pinimg.com/736x/7f/dd/0d/7fdd0d775f74dc5b4c40e96445dd290a.jpg",
-"https://i.pinimg.com/1200x/9d/60/76/9d60762c73b52e94fa44bf7a4206d6e7.jpg",
-"https://i.pinimg.com/736x/32/83/98/3283989cd201dcee63c352f3fd537f73.jpg",
-"https://i.pinimg.com/736x/28/f8/14/28f814b155cfd288705297396f63d4d2.jpg",
-],
-Cars: [
-"https://i.pinimg.com/736x/e3/2c/81/e32c8103d46f8c2f485097b055835ed7.jpg",
-"https://i.pinimg.com/736x/5d/4b/0e/5d4b0e392698e6a7fc83fb5f2318d51c.jpg",
-"https://i.pinimg.com/736x/b0/e4/bc/b0e4bc43b9500a65bedce00998305d78.jpg",
-"https://i.pinimg.com/736x/10/6e/aa/106eaacc242793c9472c9b424deca7d2.jpg",
-"https://i.pinimg.com/736x/c2/2d/2c/c22d2cfb3503bf0740d2391db6c5d1fe.jpg"
-],
-Bikes: [
-"https://i.pinimg.com/736x/a4/3f/c4/a43fc4df2c7a4af990e3104d634e9e47.jpg",
-"https://i.pinimg.com/736x/69/59/ac/6959ac3865d9a3a27112e7f837a52350.jpg",
-"https://i.pinimg.com/736x/8b/c0/fd/8bc0fd69dd8b0d51e6d6a0aa8893c9b8.jpg",
-"https://i.pinimg.com/736x/26/3b/07/263b07b8c196cef7d75c44444cdf782f.jpg",
-"https://i.pinimg.com/736x/44/49/6a/44496a78d049bcf211bdfac0371450a9.jpg",
-],
-GymQuotes: [
-"https://i.pinimg.com/736x/7a/62/57/7a6257cdfb7abcb2bf8cdd2e8504c94a.jpg",
-"https://i.pinimg.com/736x/57/8e/c0/578ec088275453906ae9ea96aba0436f.jpg",
-"https://i.pinimg.com/736x/7a/dd/f4/7addf4a96bf7515be30c3d480120986b.jpg",
-"https://i.pinimg.com/736x/34/a2/fc/34a2fc8c4ce265ce9a3c36c51a5c7c39.jpg",
-"https://i.pinimg.com/1200x/6e/12/e8/6e12e8617d1229dd4e4f15b44bac0f8d.jpg",
-],
-Gods: [
-"https://i.pinimg.com/736x/9b/59/4f/9b594f6a681626435fd2c2c1a7d26e38.jpg",
-"https://i.pinimg.com/736x/0b/dc/24/0bdc2408f35b7d43bebf4032db75d701.jpg",
-"https://i.pinimg.com/736x/6e/3b/f0/6e3bf0be385c8a9c30994c5d9c70bd18.jpg",
-"https://i.pinimg.com/736x/5f/d9/3c/5fd93c99c0fe077c435bb3d591f76847.jpg",
-"https://i.pinimg.com/736x/54/54/fa/5454fad23c2d693003f8601ca83ca018.jpg",
-"https://i.pinimg.com/736x/37/35/82/373582cf2794233ad532bb754f330c15.jpg",
-"https://i.pinimg.com/1200x/f6/2d/76/f62d769668b5b437748a9ba0cfcb973c.jpg",
-"https://i.pinimg.com/736x/f0/b1/34/f0b1347feb4b4413a948c5e60b751c61.jpg",
-"https://i.pinimg.com/736x/b9/5e/08/b95e08551d7f75300abd54c93ee18263.jpg",
-"https://i.pinimg.com/736x/ff/43/a1/ff43a13864475275e2ba695fba84631a.jpg",
-"https://i.pinimg.com/736x/3f/cf/c8/3fcfc82c53de668f96cbd900bfed5681.jpg",
-"https://i.pinimg.com/736x/eb/9f/13/eb9f1306400d736a6be7a6d16633fe8f.jpg",
-"https://i.pinimg.com/736x/5a/f6/83/5af683999c23e31dbbedf24f8e9874ac.jpg",
-"https://i.pinimg.com/1200x/23/59/0a/23590a07fa8d2a97d6c5c3d298fde73c.jpg",
-"https://i.pinimg.com/736x/d7/08/57/d708576bd0eed06eadd823e2ab3278be.jpg",
-"https://i.pinimg.com/736x/f2/74/1c/f2741c0b5b8119a8061ce15b702ea24c.jpg",
-"https://i.pinimg.com/736x/6e/98/64/6e9864bc6628b071ff9c2e7e21b93083.jpg",
-"https://i.pinimg.com/736x/84/16/2a/84162a4f3f39d7f3d66be2f8cbb8d23b.jpg",
-],
-Anime: [
-"https://i.pinimg.com/1200x/6b/5d/de/6b5dde9318c0c88f94464a03da18af2e.jpg",
-"https://i.pinimg.com/736x/e6/6a/6a/e66a6a6ad2417a08d7007f8b5982047f.jpg",
-"https://i.pinimg.com/1200x/a3/05/ac/a305ac07b881d736e20d73c2bc30ce1a.jpg",
-"https://i.pinimg.com/736x/33/2d/2e/332d2e8b2d42fd2265e8758831971f21.jpg",
-"https://i.pinimg.com/1200x/e4/b8/56/e4b856285e753b957e4c859540e756ea.jpg",
-"https://i.pinimg.com/736x/a2/2e/05/a22e0507c7230c587bf4b93d09f2ade4.jpg",
-"https://i.pinimg.com/736x/e3/7b/d7/e37bd7d91180c5dc06164db9e3f96351.jpg",
-"https://i.pinimg.com/1200x/8f/b3/87/8fb38778dcbcca45ce5faebf496ea749.jpg",
-"https://i.pinimg.com/736x/50/c0/7f/50c07fd4b98af69e737da734bbe72bcf.jpg",
-"https://i.pinimg.com/736x/78/82/ee/7882eed5145beb875f13269564dae123.jpg",
-],
-Wallpaper: [
-"https://i.pinimg.com/736x/5e/a2/e4/5ea2e4b5271ccb323fa2a7955577c725.jpg",
-"https://i.pinimg.com/736x/b2/f9/ab/b2f9ab2648c3039bf91132481e6d683d.jpg",
-"https://i.pinimg.com/736x/ed/53/60/ed536020749bf50efc81fd81cd920f1c.jpg",
-"https://i.pinimg.com/736x/d4/cb/7b/d4cb7ba1990278d144cba511524903aa.jpg",
-"https://i.pinimg.com/736x/59/10/3e/59103e74ad9f0f5a8babf3de65955515.jpg",
-"https://i.pinimg.com/736x/2e/64/40/2e6440ce11ac1ccc469321346c179406.jpg",
-"https://i.pinimg.com/736x/c8/f7/9f/c8f79f1bddbb5f10a584c639ef29fb90.jpg",
-"https://i.pinimg.com/736x/81/47/5b/81475b623c9f6dcca13a27835111d228.jpg",
-"https://i.pinimg.com/736x/8f/83/b2/8f83b27aca8da179e7eaf4f5fd243d06.jpg",
-"https://i.pinimg.com/736x/ad/47/55/ad475517a4256b970b71abd6ad1035f8.jpg",
-"https://i.pinimg.com/736x/7d/07/90/7d0790f4e214ead5d69c74bd69bef10a.jpg",
-"https://i.pinimg.com/736x/9f/9f/4a/9f9f4aaa49a529d6df540cb1b683cb31.jpg",
-"https://i.pinimg.com/736x/99/89/9a/99899a73df6b9f0ed7675f0625b875f1.jpg",
-"https://i.pinimg.com/736x/8e/5a/e4/8e5ae48c600594e0d4f6ed6ff0446dab.jpg",
-"https://i.pinimg.com/736x/c5/73/3b/c5733b129c19d1601a3d0fbb22665b3d.jpg",
-"https://i.pinimg.com/736x/a5/c4/ba/a5c4ba95bf3140512c9b0cf70ca4868b.jpg",
-"https://i.pinimg.com/736x/31/7c/e5/317ce500a3fb74943edccf909a690bd6.jpg",
-"https://i.pinimg.com/1200x/b9/2f/ee/b92feede3fe4686d110d0c84394ea5fc.jpg",
-"https://i.pinimg.com/736x/61/2b/4f/612b4f1142278ee6e091c2ab437684ea.jpg",
-"https://i.pinimg.com/736x/2e/32/1c/2e321c04392f2fad2283bcf24a370c82.jpg",
-"https://i.pinimg.com/736x/50/f7/4e/50f74e95c7f3a650187e0ccd31a43bfc.jpg",
-"https://i.pinimg.com/736x/a4/60/30/a460303d287fa52395c727c8176a9162.jpg",
-],
+  Sports: [
+    "https://i.pinimg.com/736x/06/c8/3e/06c83e4ee573251638b8ad16829e3f55.jpg",
+    "https://i.pinimg.com/736x/84/6c/e6/846ce648412f882ee61df34324900d91.jpg",
+    "https://i.pinimg.com/1200x/e8/4d/b4/e84db44722998f72ad72d57b950c0be1.jpg",
+    "https://i.pinimg.com/1200x/21/2f/cf/212fcf03c37b32353c98945e280bb780.jpg",
+    "https://i.pinimg.com/736x/f3/06/cd/f306cddc3120e87ff23375d67a629b4d.jpg",
+    "https://i.pinimg.com/736x/61/b1/81/61b18155979e5474f281d19d5d526beb.jpg",
+    "https://i.pinimg.com/736x/03/7c/99/037c99357287cb0f5435e31f13bb0f71.jpg",
+    "https://i.pinimg.com/1200x/80/22/08/80220895dda1b14edd2efd51384c1f2f.jpg",
+    "https://i.pinimg.com/736x/b6/74/a2/b674a2116e46fcfa7aadb4e1c19b0ab4.jpg",
+    "https://i.pinimg.com/1200x/25/e6/7e/25e67e2c51d9e42a7340ddbbfc744760.jpg",
+    "https://i.pinimg.com/736x/af/c0/c6/afc0c69a2fd88115c9e00c2302924c2a.jpg",
+    "https://i.pinimg.com/736x/8e/16/3d/8e163def380f6dcf0cb92ab288a022be.jpg",
+    "https://i.pinimg.com/736x/24/6f/c7/246fc7ceade578454acfd0232444df24.jpg",
+    "https://i.pinimg.com/736x/ba/6b/68/ba6b68284a11c0851ab7f5b629a1fade.jpg",
+    "https://i.pinimg.com/736x/2d/71/90/2d7190f62941f597fcda5a76f36f09e9.jpg",
+  ],
+  MoviePosters: [
+    "https://i.pinimg.com/736x/c8/54/cc/c854ccce48c3dbbeb16a834046bce01c.jpg",
+    "https://i.pinimg.com/1200x/9d/2b/ae/9d2bae0d90fa6f420ada970fe9727bca.jpg",
+    "https://i.pinimg.com/736x/91/c8/f8/91c8f89c8b117553ad44dd29e983dc28.jpg",
+    "https://i.pinimg.com/736x/a0/39/47/a0394796b97678445deb1323f27ff97f.jpg",
+    "https://i.pinimg.com/1200x/37/62/75/37627587496965efcc0ae42ac9dff525.jpg",
+    "https://i.pinimg.com/736x/a3/b1/ac/a3b1acef9e1c6e6add483470789a94aa.jpg",
+  ],
+  Gaming: [
+    "https://i.pinimg.com/736x/4b/65/af/4b65af5f05779610c6b9f3786a699d89.jpg",
+    "https://i.pinimg.com/736x/8b/90/ab/8b90ababc702e66b6d2056d1b7bfd972.jpg",
+    "https://i.pinimg.com/736x/6a/ef/69/6aef69e54da790b881ced28a7dddec48.jpg",
+    "https://i.pinimg.com/736x/7c/a8/ad/7ca8ad25c97b08ee64576dfd83d4f96c.jpg",
+    "https://i.pinimg.com/736x/f9/e5/fc/f9e5fc8b02fcb8b359ea4f59e36cb696.jpg",
+  ],
+  Marvel: [
+    "https://i.pinimg.com/1200x/c8/54/cc/c854ccce48c3dbbeb16a834046bce01c.jpg",
+    "https://i.pinimg.com/736x/7f/dd/0d/7fdd0d775f74dc5b4c40e96445dd290a.jpg",
+    "https://i.pinimg.com/1200x/9d/60/76/9d60762c73b52e94fa44bf7a4206d6e7.jpg",
+    "https://i.pinimg.com/736x/32/83/98/3283989cd201dcee63c352f3fd537f73.jpg",
+    "https://i.pinimg.com/736x/28/f8/14/28f814b155cfd288705297396f63d4d2.jpg",
+  ],
+  Cars: [
+    "https://i.pinimg.com/736x/e3/2c/81/e32c8103d46f8c2f485097b055835ed7.jpg",
+    "https://i.pinimg.com/736x/5d/4b/0e/5d4b0e392698e6a7fc83fb5f2318d51c.jpg",
+    "https://i.pinimg.com/736x/b0/e4/bc/b0e4bc43b9500a65bedce00998305d78.jpg",
+    "https://i.pinimg.com/736x/10/6e/aa/106eaacc242793c9472c9b424deca7d2.jpg",
+    "https://i.pinimg.com/736x/c2/2d/2c/c22d2cfb3503bf0740d2391db6c5d1fe.jpg"
+  ],
+  Bikes: [
+    "https://i.pinimg.com/736x/a4/3f/c4/a43fc4df2c7a4af990e3104d634e9e47.jpg",
+    "https://i.pinimg.com/736x/69/59/ac/6959ac3865d9a3a27112e7f837a52350.jpg",
+    "https://i.pinimg.com/736x/8b/c0/fd/8bc0fd69dd8b0d51e6d6a0aa8893c9b8.jpg",
+    "https://i.pinimg.com/736x/26/3b/07/263b07b8c196cef7d75c44444cdf782f.jpg",
+    "https://i.pinimg.com/736x/44/49/6a/44496a78d049bcf211bdfac0371450a9.jpg",
+  ],
+  GymQuotes: [
+    "https://i.pinimg.com/736x/7a/62/57/7a6257cdfb7abcb2bf8cdd2e8504c94a.jpg",
+    "https://i.pinimg.com/736x/57/8e/c0/578ec088275453906ae9ea96aba0436f.jpg",
+    "https://i.pinimg.com/736x/7a/dd/f4/7addf4a96bf7515be30c3d480120986b.jpg",
+    "https://i.pinimg.com/736x/34/a2/fc/34a2fc8c4ce265ce9a3c36c51a5c7c39.jpg",
+    "https://i.pinimg.com/1200x/6e/12/e8/6e12e8617d1229dd4e4f15b44bac0f8d.jpg",
+  ],
+  Gods: [
+    "https://i.pinimg.com/736x/9b/59/4f/9b594f6a681626435fd2c2c1a7d26e38.jpg",
+    "https://i.pinimg.com/736x/0b/dc/24/0bdc2408f35b7d43bebf4032db75d701.jpg",
+    "https://i.pinimg.com/736x/6e/3b/f0/6e3bf0be385c8a9c30994c5d9c70bd18.jpg",
+    "https://i.pinimg.com/736x/5f/d9/3c/5fd93c99c0fe077c435bb3d591f76847.jpg",
+    "https://i.pinimg.com/736x/54/54/fa/5454fad23c2d693003f8601ca83ca018.jpg",
+    "https://i.pinimg.com/736x/37/35/82/373582cf2794233ad532bb754f330c15.jpg",
+    "https://i.pinimg.com/1200x/f6/2d/76/f62d769668b5b437748a9ba0cfcb973c.jpg",
+    "https://i.pinimg.com/736x/f0/b1/34/f0b1347feb4b4413a948c5e60b751c61.jpg",
+    "https://i.pinimg.com/736x/b9/5e/08/b95e08551d7f75300abd54c93ee18263.jpg",
+    "https://i.pinimg.com/736x/ff/43/a1/ff43a13864475275e2ba695fba84631a.jpg",
+    "https://i.pinimg.com/736x/3f/cf/c8/3fcfc82c53de668f96cbd900bfed5681.jpg",
+    "https://i.pinimg.com/736x/eb/9f/13/eb9f1306400d736a6be7a6d16633fe8f.jpg",
+    "https://i.pinimg.com/736x/5a/f6/83/5af683999c23e31dbbedf24f8e9874ac.jpg",
+    "https://i.pinimg.com/1200x/23/59/0a/23590a07fa8d2a97d6c5c3d298fde73c.jpg",
+    "https://i.pinimg.com/736x/d7/08/57/d708576bd0eed06eadd823e2ab3278be.jpg",
+    "https://i.pinimg.com/736x/f2/74/1c/f2741c0b5b8119a8061ce15b702ea24c.jpg",
+    "https://i.pinimg.com/736x/6e/98/64/6e9864bc6628b071ff9c2e7e21b93083.jpg",
+    "https://i.pinimg.com/736x/84/16/2a/84162a4f3f39d7f3d66be2f8cbb8d23b.jpg",
+  ],
+  Anime: [
+    "https://i.pinimg.com/1200x/6b/5d/de/6b5dde9318c0c88f94464a03da18af2e.jpg",
+    "https://i.pinimg.com/736x/e6/6a/6a/e66a6a6ad2417a08d7007f8b5982047f.jpg",
+    "https://i.pinimg.com/1200x/a3/05/ac/a305ac07b881d736e20d73c2bc30ce1a.jpg",
+    "https://i.pinimg.com/736x/33/2d/2e/332d2e8b2d42fd2265e8758831971f21.jpg",
+    "https://i.pinimg.com/1200x/e4/b8/56/e4b856285e753b957e4c859540e756ea.jpg",
+    "https://i.pinimg.com/736x/a2/2e/05/a22e0507c7230c587bf4b93d09f2ade4.jpg",
+    "https://i.pinimg.com/736x/e3/7b/d7/e37bd7d91180c5dc06164db9e3f96351.jpg",
+    "https://i.pinimg.com/1200x/8f/b3/87/8fb38778dcbcca45ce5faebf496ea749.jpg",
+    "https://i.pinimg.com/736x/50/c0/7f/50c07fd4b98af69e737da734bbe72bcf.jpg",
+    "https://i.pinimg.com/736x/78/82/ee/7882eed5145beb875f13269564dae123.jpg",
+  ],
+  Wallpaper: [
+    "https://i.pinimg.com/736x/5e/a2/e4/5ea2e4b5271ccb323fa2a7955577c725.jpg",
+    "https://i.pinimg.com/736x/b2/f9/ab/b2f9ab2648c3039bf91132481e6d683d.jpg",
+    "https://i.pinimg.com/736x/ed/53/60/ed536020749bf50efc81fd81cd920f1c.jpg",
+    "https://i.pinimg.com/736x/d4/cb/7b/d4cb7ba1990278d144cba511524903aa.jpg",
+    "https://i.pinimg.com/736x/59/10/3e/59103e74ad9f0f5a8babf3de65955515.jpg",
+    "https://i.pinimg.com/736x/2e/64/40/2e6440ce11ac1ccc469321346c179406.jpg",
+    "https://i.pinimg.com/736x/c8/f7/9f/c8f79f1bddbb5f10a584c639ef29fb90.jpg",
+    "https://i.pinimg.com/736x/81/47/5b/81475b623c9f6dcca13a27835111d228.jpg",
+    "https://i.pinimg.com/736x/8f/83/b2/8f83b27aca8da179e7eaf4f5fd243d06.jpg",
+    "https://i.pinimg.com/736x/ad/47/55/ad475517a4256b970b71abd6ad1035f8.jpg",
+    "https://i.pinimg.com/736x/7d/07/90/7d0790f4e214ead5d69c74bd69bef10a.jpg",
+    "https://i.pinimg.com/736x/9f/9f/4a/9f9f4aaa49a529d6df540cb1b683cb31.jpg",
+    "https://i.pinimg.com/736x/99/89/9a/99899a73df6b9f0ed7675f0625b875f1.jpg",
+    "https://i.pinimg.com/736x/8e/5a/e4/8e5ae48c600594e0d4f6ed6ff0446dab.jpg",
+    "https://i.pinimg.com/736x/c5/73/3b/c5733b129c19d1601a3d0fbb22665b3d.jpg",
+    "https://i.pinimg.com/736x/a5/c4/ba/a5c4ba95bf3140512c9b0cf70ca4868b.jpg",
+    "https://i.pinimg.com/736x/31/7c/e5/317ce500a3fb74943edccf909a690bd6.jpg",
+    "https://i.pinimg.com/1200x/b9/2f/ee/b92feede3fe4686d110d0c84394ea5fc.jpg",
+    "https://i.pinimg.com/736x/61/2b/4f/612b4f1142278ee6e091c2ab437684ea.jpg",
+    "https://i.pinimg.com/736x/2e/32/1c/2e321c04392f2fad2283bcf24a370c82.jpg",
+    "https://i.pinimg.com/736x/50/f7/4e/50f74e95c7f3a650187e0ccd31a43bfc.jpg",
+    "https://i.pinimg.com/736x/a4/60/30/a460303d287fa52395c727c8176a9162.jpg",
+  ],
 };
 
 
 export default function FramePreview() {
-const [rotation1, setRotation1] = useState(0); 
-const [selectedImage1, setSelectedImage1] = useState(imageCategories.Sports[0]);
-const [frameColor1, setFrameColor1] = useState("#000000");
-const [imageSource, setImageSource] = useState<"category" | "custom">("category");
-const [bgColor, setBgColor] = useState("#e5e7eb");
-const [fitMode, setFitMode] = useState("fill");
-const [isModalOpen, setIsModalOpen] = useState(false);
-const [selectedCategory, setSelectedCategory] = useState<keyof typeof imageCategories>("Sports");
-const [customImageUrl, setCustomImageUrl] = useState("");
-const [customImageError, setCustomImageError] = useState("");
-const currentPrice = imageSource === "category" ? 199 : 249;
-const [isDmOpen, setIsDmOpen] = useState(false);
-const [dmImage, setDmImage] = useState("");
-const [actionError, setActionError] = useState("");
-const frameOptions = [
-{ name: "Black", color: "#000000" },
-{ name: "Brown", coor: "#8B5E3C" },
-{ name: "Silver", color: "#C0C0C0" },
-{ name: "Gold", color: "#D4AF37" },
-{ name: "White", color: "#FFFFFF" },
-{ name: "Matte Black", color: "#2C2C2C" },
-{ name: "Dark Wood", color: "#5B4636" },
-{ name: "Light Wood", color: "#A67C52" },
-{ name: "Gray", color: "#374151" },
-{ name: "Charcoal", color: "#1F2937" },
-];
-const bgOptions = [
-{ name: "Gray Wall", color: "#e5e7eb" },
-{ name: "White Wall", color: "#ffffff" },
-{ name: "Dark Wall", color: "#111827" },
-{ name: "Cream Wall", color: "#fef3c7" },
-{ name: "Light Gray", color: "#f3f4f6" },
-{ name: "Lavender", color: "#ede9fe" },
-{ name: "Cyan Light", color: "#ecfeff" },
-{ name: "Green Light", color: "#f0fdf4" },
-{ name: "Warm White", color: "#fff7ed" },
-{ name: "Black Wall", color: "#000000" },
-];
-const setCurrentFrameColor = (color: string) => {
-setFrameColor1(color);
-};
-const setCurrentImage = (img: string) => {
-setSelectedImage1(img);
-};
-const applyCustomImage = () => {
-const url = customImageUrl.trim();
-if (!url) {
-setCustomImageError("Please enter an image URL.");
-return;
+  const [rotation1, setRotation1] = useState(0);
+  const [selectedImage1, setSelectedImage1] = useState(imageCategories.Sports[0]);
+  const [frameColor1, setFrameColor1] = useState("#000000");
+  const [imageSource, setImageSource] = useState<"category" | "custom">("category");
+  const [bgColor, setBgColor] = useState("#e5e7eb");
+  const [fitMode, setFitMode] = useState("fill");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<keyof typeof imageCategories>("Sports");
+  const [customImageUrl, setCustomImageUrl] = useState("");
+  const [customImageError, setCustomImageError] = useState("");
+  const currentPrice = imageSource === "category" ? 249 : 249;
+  const [isDmOpen, setIsDmOpen] = useState(false);
+  const [dmImage, setDmImage] = useState("");
+  const [actionError, setActionError] = useState("");
+  const frameOptions = [
+    { name: "Black", color: "#000000" },
+    { name: "Brown", coor: "#8B5E3C" },
+    { name: "Silver", color: "#C0C0C0" },
+    { name: "Gold", color: "#D4AF37" },
+    { name: "White", color: "#FFFFFF" },
+    { name: "Matte Black", color: "#2C2C2C" },
+    { name: "Dark Wood", color: "#5B4636" },
+    { name: "Light Wood", color: "#A67C52" },
+    { name: "Gray", color: "#374151" },
+    { name: "Charcoal", color: "#1F2937" },
+  ];
+  const bgOptions = [
+    { name: "Gray Wall", color: "#e5e7eb" },
+    { name: "White Wall", color: "#ffffff" },
+    { name: "Dark Wall", color: "#111827" },
+    { name: "Cream Wall", color: "#fef3c7" },
+    { name: "Light Gray", color: "#f3f4f6" },
+    { name: "Lavender", color: "#ede9fe" },
+    { name: "Cyan Light", color: "#ecfeff" },
+    { name: "Green Light", color: "#f0fdf4" },
+    { name: "Warm White", color: "#fff7ed" },
+    { name: "Black Wall", color: "#000000" },
+  ];
+  const setCurrentFrameColor = (color: string) => {
+    setFrameColor1(color);
+  };
+  const setCurrentImage = (img: string) => {
+    setSelectedImage1(img);
+  };
+  const applyCustomImage = () => {
+    const url = customImageUrl.trim();
+    if (!url) {
+      setCustomImageError("Please enter an image URL.");
+      return;
     }
     try {
       const parsedUrl = new URL(url);
@@ -331,7 +331,7 @@ return;
         Customize
       </button>
 
-     
+
       {isModalOpen && (
         <>
           {/* Backdrop */}
@@ -401,7 +401,7 @@ return;
                   </div>
                 </div>
 
-                
+
 
                 {/* CUSTOM IMAGE URL */}
                 <div>
@@ -449,13 +449,13 @@ return;
                   )}
                 </div>
                 <img
-                src={selectedImage1}
-                alt="Selected by user"
-                className="h-20 w-14 rounded-md border border-purple-300 object-cover"
-              />
+                  src={selectedImage1}
+                  alt="Selected by user"
+                  className="h-20 w-14 rounded-md border border-purple-300 object-cover"
+                />
 
                 {/* IMAGE GALLERY */}
-               
+
                 {/* WALL BACKGROUND */}
                 <div>
                   <div className="flex items-center gap-2 mb-4">
@@ -592,7 +592,7 @@ return;
                   : "Uploaded/custom image selected"}
               </p>
               <div className="mt-3 grid grid-cols-3 gap-2">
-               
+
                 <button
                   type="button"
                   className="rounded-lg bg-gradient-to-r from-purple-600 to-blue-600 px-3 py-2 text-xs font-semibold text-white hover:opacity-90 transition"
@@ -648,7 +648,7 @@ return;
             {selectedCategory} Collection
           </h3>
 
-         
+
 
           <div className="grid grid-cols-5 gap-4">
             {imageCategories[selectedCategory].map((img, index) => (

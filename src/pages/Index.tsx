@@ -5,7 +5,7 @@ import { ArrowRight, Sparkles, ShieldCheck, Truck, Package, MessageCircle, Slide
 import Hero from '@/components/Hero';
 import ProductCard from '@/components/ProductCard';
 import WallSetupCard from '@/components/WallSetupCard';
-// import GalleryWallStudio from '@/components/GalleryWallStudio';
+import GalleryWallStudio from '@/components/GalleryWallStudio';
 import PosterWallExperience from '@/components/PosterWallExperience';
 import A4BundlePacksSection from '@/components/A4BundlePacksSection';
 import SizesPricingBreakdownMatrix from '@/components/SizesPricingBreakdownMatrix';
@@ -411,7 +411,7 @@ const Index = () => {
       </section>
 
       {/* 5. Living Room Gallery Studio (Framed Wall Art with Mouldings & Mats) */}
-      {/* <GalleryWallStudio /> */}
+      <GalleryWallStudio />
 
       {/* 6. A4 Poster Pack Combinations (Mix & Match 1 to 40 Prints) */}
       <A4BundlePacksSection />

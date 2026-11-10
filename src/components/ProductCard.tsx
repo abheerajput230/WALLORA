@@ -235,20 +235,22 @@ const ProductCard = ({
           ========================================================================= */}
       <div className="p-4 sm:p-4.5 flex flex-col flex-1 justify-between bg-white">
         <div>
-          <div className="flex items-center justify-between text-xs text-neutral-500 mb-1">
-            <span className="font-semibold text-amber-800 uppercase tracking-wider text-[11px]">
-              {product.category}
-            </span>
-            <span className="flex items-center gap-1 font-semibold text-neutral-700 text-xs">
-              ★ {product.rating}
-            </span>
-          </div>
-
           <Link to={`/product/${product.id}`} className="block">
-            <h3 className="font-display text-sm sm:text-base font-bold text-neutral-900 line-clamp-1 group-hover:text-amber-800 transition-colors">
-              {product.title}
-            </h3>
+
+            <div className="flex items-center justify-between text-xs text-neutral-500 mb-1">
+              <span className="font-semibold text-amber-800 uppercase tracking-wider text-[11px]">
+                {product.category}
+              </span>
+              <span className="flex items-center gap-1 font-semibold text-neutral-700 text-xs">
+                ★ {product.rating}
+              </span>
+            </div>
           </Link>
+
+          {/* <Link to={`/product/${product.id}`} className="block"> */}
+          {/* <h3 className="font-display text-sm sm:text-base font-bold text-neutral-900 line-clamp-1 group-hover:text-amber-800 transition-colors">
+              {product.title}
+            </h3> */}
 
           <p className="text-xs text-neutral-500 line-clamp-1 mt-0.5">
             {framed ? (
@@ -266,7 +268,7 @@ const ProductCard = ({
           <div>
             <div className="flex items-baseline gap-1.5">
               <span className="text-base sm:text-lg font-bold text-neutral-900">
-                {framed ? '₹349' : '₹30'}
+                {framed ? '₹249' : '₹30'}
               </span>
               <span className="text-xs text-neutral-400 line-through">
                 {framed ? '₹699' : '₹99'}

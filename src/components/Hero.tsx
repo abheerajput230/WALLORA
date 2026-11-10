@@ -54,7 +54,7 @@ const Hero = () => {
               <div className="p-2 border-r border-[#E8E2D8]/60">
                 <span className="block text-[11px] font-semibold text-neutral-500 uppercase">A4 Print</span>
                 <span className="text-base font-bold text-neutral-900">₹30</span>
-                <span className="block text-[10px] text-amber-700 font-medium">Framed ₹349</span>
+                <span className="block text-[10px] text-amber-700 font-medium">Framed ₹249</span>
               </div>
               <div className="p-2 sm:border-r border-[#E8E2D8]/60">
                 <span className="block text-[11px] font-semibold text-neutral-500 uppercase">A3 Print</span>

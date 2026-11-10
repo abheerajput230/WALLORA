@@ -52,7 +52,7 @@ export const SIZE_PRICING: Record<PosterSize, SizeOption> = {
     label: 'A4',
     dimensions: '9 × 12 in (21 × 29.7 cm)',
     unframedPrice: 30,
-    framedPrice: 349,
+    framedPrice: 249,
     originalUnframedPrice: 99,
     originalFramedPrice: 699,
     competitorPriceUnframed: 149,
@@ -710,7 +710,7 @@ export const generateProductWhatsAppUrl = (
     `Hi! I would like to place an order / enquire about delivery time for this poster. Please confirm!`,
   ].join('\n');
 
-  return `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${8278224150}?text=${encodeURIComponent(message)}`;
 };
 
 export const generateCartWhatsAppUrl = (
