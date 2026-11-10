@@ -9,11 +9,13 @@ import WalloraLogo, { INSTAGRAM_URL } from '@/components/WalloraLogo';
 
 const Navbar = () => {
   const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const [studiosOpen, setStudiosOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const { totalItems, setIsOpen } = useCart();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const studiosRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
   // Dynamic categories from subfolders + standard list
@@ -23,11 +25,15 @@ const Navbar = () => {
     return Array.from(set);
   }, []);
 
-  // Close dropdown on outside click
+  // Close dropdowns on outside click
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      if (dropdownRef.current && !dropdownRef.current.contains(target)) {
         setCategoriesOpen(false);
+      }
+      if (studiosRef.current && !studiosRef.current.contains(target)) {
+        setStudiosOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -89,17 +95,34 @@ const Navbar = () => {
             </button>
 
             {/* Wallora Logo */}
-            <Link to="/" className="flex items-center gap-2 group">
+            <Link to="/" className="flex items-center gap-2 group mr-2 xl:mr-6 shrink-0">
               <WalloraLogo variant="navbar" />
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
+            {/* Desktop Navigation - Clean, Elegant & Uncluttered */}
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
               <Link
                 to="/"
-                className="text-sm font-semibold tracking-wide text-neutral-800 hover:text-amber-800 transition-colors"
+                className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors py-2"
               >
                 Home
+              </Link>
+
+              <Link
+                to="/products?filter=framed"
+                className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors py-2 flex items-center gap-1.5"
+              >
+                <span>Framed Art</span>
+                <span className="px-1.5 py-0.5 text-[9px] font-bold bg-amber-100 text-amber-900 rounded-full uppercase tracking-wider">
+                  Frames
+                </span>
+              </Link>
+
+              <Link
+                to="/products"
+                className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors py-2"
+              >
+                Posters
               </Link>
 
               {/* Categories Mega Dropdown */}
@@ -107,7 +130,7 @@ const Navbar = () => {
                 <button
                   onClick={() => setCategoriesOpen(!categoriesOpen)}
                   onMouseEnter={() => setCategoriesOpen(true)}
-                  className="text-sm font-semibold tracking-wide text-neutral-800 hover:text-amber-800 transition-colors flex items-center gap-1.5 py-2"
+                  className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors flex items-center gap-1 py-2"
                 >
                   <span>Categories</span>
                   <ChevronDown
@@ -124,18 +147,18 @@ const Navbar = () => {
                       exit={{ opacity: 0, y: 8 }}
                       transition={{ duration: 0.15 }}
                       onMouseLeave={() => setCategoriesOpen(false)}
-                      className="absolute left-1/2 -translate-x-1/2 top-full mt-1 w-[560px] bg-white rounded-2xl p-5 shadow-2xl border border-neutral-200/80 z-50 max-h-[480px] overflow-y-auto"
+                      className="absolute left-0 top-full mt-1 w-[560px] bg-white rounded-2xl p-5 shadow-2xl border border-neutral-200/80 z-50 max-h-[480px] overflow-y-auto"
                     >
                       <div className="flex items-center justify-between pb-3 mb-3 border-b border-neutral-100">
                         <span className="text-xs font-bold uppercase tracking-widest text-neutral-500">
-                          Explore All Art Categories ({dynamicCategories.length})
+                          Explore Art Categories ({dynamicCategories.length})
                         </span>
                         <Link
                           to="/products"
                           onClick={() => setCategoriesOpen(false)}
                           className="text-xs font-semibold text-amber-800 hover:underline"
                         >
-                          View All Framed Art →
+                          View All Art →
                         </Link>
                       </div>
 
@@ -161,56 +184,136 @@ const Navbar = () => {
                 </AnimatePresence>
               </div>
 
-              <Link
-                to="/products"
-                className="text-sm font-semibold tracking-wide text-neutral-800 hover:text-amber-800 transition-colors"
+              {/* Combo Packs / Pricing */}
+              <a
+                href="/#sizes-matrix"
+                className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors py-2 flex items-center gap-1.5"
               >
-                All Posters
-              </Link>
+                <span>Combos</span>
+                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded-full border border-emerald-200/60">
+                  From ₹30
+                </span>
+              </a>
 
+              {/* 3D Wall Studios Unified Dropdown (Replaces 3 Clashing Buttons!) */}
+              <div className="relative" ref={studiosRef}>
+                <button
+                  onClick={() => setStudiosOpen(!studiosOpen)}
+                  onMouseEnter={() => setStudiosOpen(true)}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-900 bg-white hover:bg-neutral-50 border border-neutral-300 shadow-xs transition-all"
+                >
+                  <Sparkles size={12} className="text-amber-600" />
+                  <span>3D Wall Studios</span>
+                  <ChevronDown
+                    size={13}
+                    className={`transition-transform duration-200 ${studiosOpen ? 'rotate-180' : ''}`}
+                  />
+                </button>
 
+                <AnimatePresence>
+                  {studiosOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.15 }}
+                      onMouseLeave={() => setStudiosOpen(false)}
+                      className="absolute right-0 xl:left-0 top-full mt-1.5 w-[360px] bg-white rounded-2xl p-3 shadow-2xl border border-neutral-200 z-50"
+                    >
+                      <div className="px-3 pt-2 pb-2 border-b border-neutral-100 flex items-center justify-between">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500">
+                          Interactive Studio Tools
+                        </span>
+                        <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full">
+                          Live 3D
+                        </span>
+                      </div>
 
-              <Link
-                to="/products?filter=framed"
-                className="text-sm font-semibold tracking-wide text-neutral-800 hover:text-amber-800 transition-colors"
-              >
-                Framed Art
-              </Link>
+                      <div className="p-1 space-y-1 mt-1">
+                        {/* 1. Gallery Wall Studio */}
+                        <Link
+                          to="/gallery-studio"
+                          onClick={() => setStudiosOpen(false)}
+                          className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#FAF8F5] transition-colors group"
+                        >
+                          <div className="w-9 h-9 rounded-lg bg-neutral-900 text-amber-300 flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                            <Layers size={18} />
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-xs font-bold text-neutral-900 group-hover:text-amber-900">
+                                Gallery Wall Studio
+                              </span>
+                              <span className="text-[9px] font-bold bg-amber-100 text-amber-900 px-1.5 py-0.2 rounded-full uppercase">
+                                Real Frames
+                              </span>
+                            </div>
+                            <p className="text-[11px] text-neutral-500 mt-0.5 leading-snug">
+                              3D living room wall preview with Oak Wood, Matte Black & Gold finishes.
+                            </p>
+                          </div>
+                        </Link>
 
-              <Link
-                to="/poster-wall"
-                className="text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full bg-amber-600 hover:bg-amber-700 text-white transition-all flex items-center gap-1.5 shadow-sm"
-              >
-                <Sparkles size={12} className="text-amber-200" />
-                <span>Poster Wall</span>
-              </Link>
+                        {/* 2. Poster Wall Creator */}
+                        <Link
+                          to="/poster-wall"
+                          onClick={() => setStudiosOpen(false)}
+                          className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#FAF8F5] transition-colors group"
+                        >
+                          <div className="w-9 h-9 rounded-lg bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                            <Sparkles size={18} />
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-xs font-bold text-neutral-900 group-hover:text-amber-900">
+                                The Living Poster Wall
+                              </span>
+                              <span className="text-[9px] font-bold bg-emerald-100 text-emerald-900 px-1.5 py-0.2 rounded-full uppercase">
+                                Multi-Packs
+                              </span>
+                            </div>
+                            <p className="text-[11px] text-neutral-500 mt-0.5 leading-snug">
+                              Curate 20–30 print packs with instant discounts and multi-angle room grids.
+                            </p>
+                          </div>
+                        </Link>
 
-              <Link
-                to="/gallery-studio"
-                className="text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 transition-colors flex items-center gap-1.5 shadow-sm"
-              >
-                <Layers size={12} className="text-amber-300" />
-                <span>Gallery Studio</span>
-              </Link>
-
-              <Link
-                to="/custom-frame"
-                className="text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full bg-amber-100/70 text-amber-900 hover:bg-amber-200/80 transition-colors flex items-center gap-1.5"
-              >
-                <Sliders size={12} />
-                <span>Visualizer</span>
-              </Link>
+                        {/* 3. Custom Frame Visualizer */}
+                        <Link
+                          to="/custom-frame"
+                          onClick={() => setStudiosOpen(false)}
+                          className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#FAF8F5] transition-colors group"
+                        >
+                          <div className="w-9 h-9 rounded-lg bg-neutral-100 text-neutral-800 border border-neutral-200 flex items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform">
+                            <Sliders size={18} />
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-xs font-bold text-neutral-900 group-hover:text-amber-900">
+                                Custom Frame Visualizer
+                              </span>
+                            </div>
+                            <p className="text-[11px] text-neutral-500 mt-0.5 leading-snug">
+                              Upload your photo, select moulding widths & mat borders in real-time.
+                            </p>
+                          </div>
+                        </Link>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </nav>
 
-            {/* Right Action Icons */}
-            <div className="flex items-center gap-2 sm:gap-3">
+            {/* Right Action Icons - Balanced & Refined */}
+            <div className="flex items-center gap-2 sm:gap-2.5">
               {/* Search Toggle */}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
                 aria-label="Search"
-                className="p-2.5 rounded-full text-neutral-800 hover:bg-neutral-200/50 transition-colors"
+                className="p-2 rounded-full text-neutral-700 hover:text-neutral-950 hover:bg-neutral-200/60 transition-colors"
               >
-                <Search size={20} />
+                <Search size={19} />
               </button>
 
               {/* Instagram Quick Link */}
@@ -220,20 +323,20 @@ const Navbar = () => {
                 rel="noopener noreferrer"
                 title="Follow @bywallora on Instagram"
                 aria-label="Instagram @bywallora"
-                className="p-2.5 rounded-full text-neutral-800 hover:text-pink-600 hover:bg-neutral-200/50 transition-colors"
+                className="p-2 rounded-full text-neutral-700 hover:text-pink-600 hover:bg-neutral-200/60 transition-colors"
               >
-                <Instagram size={20} />
+                <Instagram size={19} />
               </a>
 
-              {/* WhatsApp Quick Link */}
+              {/* WhatsApp Quick Helpline Pill */}
               <a
                 href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hello%20WALLORA!%20I%20have%20an%20order%20enquiry.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Chat with Us on WhatsApp"
-                className="hidden sm:flex items-center gap-1.5 py-2 px-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full text-xs font-semibold shadow-sm transition-colors"
+                className="hidden sm:inline-flex items-center gap-1.5 py-1.5 px-3 bg-emerald-50 text-emerald-800 hover:bg-emerald-600 hover:text-white border border-emerald-200 rounded-full text-xs font-semibold transition-all shadow-2xs"
               >
-                <MessageCircle size={15} />
+                <MessageCircle size={14} className="text-emerald-600 group-hover:text-white" />
                 <span>WhatsApp</span>
               </a>
 
@@ -241,11 +344,11 @@ const Navbar = () => {
               <button
                 onClick={() => setIsOpen(true)}
                 aria-label="View Cart"
-                className="relative p-2.5 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 transition-colors shadow-sm flex items-center justify-center"
+                className="relative p-2.5 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 transition-colors shadow-sm flex items-center justify-center ml-1"
               >
-                <ShoppingBag size={19} />
+                <ShoppingBag size={18} />
                 {totalItems > 0 && (
-                  <span className="absolute -top-1 -right-1 min-w-[20px] h-[20px] px-1 bg-amber-600 text-white rounded-full text-[11px] font-bold flex items-center justify-center shadow-sm">
+                  <span className="absolute -top-1 -right-1 min-w-[19px] h-[19px] px-1 bg-amber-600 text-white rounded-full text-[10px] font-bold flex items-center justify-center shadow-xs">
                     {totalItems}
                   </span>
                 )}
@@ -296,42 +399,84 @@ const Navbar = () => {
               className="lg:hidden border-t border-[#E8E2D8] bg-[#FAF8F5] max-h-[80vh] overflow-y-auto px-6 py-6"
             >
               <div className="space-y-4">
-                <Link
-                  to="/"
-                  onClick={() => setMobileOpen(false)}
-                  className="block text-base font-semibold text-neutral-900"
-                >
-                  Home
-                </Link>
-                <Link
-                  to="/products"
-                  onClick={() => setMobileOpen(false)}
-                  className="block text-base font-semibold text-neutral-900"
-                >
-                  All Posters (Full Catalog)
-                </Link>
+                <div className="space-y-2">
+                  <Link
+                    to="/"
+                    onClick={() => setMobileOpen(false)}
+                    className="block text-sm font-semibold text-neutral-900 py-1.5"
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    to="/products?filter=framed"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-between text-sm font-semibold text-neutral-900 py-1.5"
+                  >
+                    <span>Framed Wall Art</span>
+                    <span className="text-[10px] font-bold bg-amber-100 text-amber-900 px-2 py-0.5 rounded-full uppercase">
+                      Ready to Hang
+                    </span>
+                  </Link>
+                  <Link
+                    to="/products"
+                    onClick={() => setMobileOpen(false)}
+                    className="block text-sm font-semibold text-neutral-900 py-1.5"
+                  >
+                    Posters (300 GSM Prints)
+                  </Link>
+                  <a
+                    href="/#sizes-matrix"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center justify-between text-sm font-semibold text-neutral-900 py-1.5"
+                  >
+                    <span>Combos & Packs</span>
+                    <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                      From ₹30
+                    </span>
+                  </a>
+                </div>
 
-                <Link
-                  to="/poster-wall"
-                  onClick={() => setMobileOpen(false)}
-                  className="block text-base font-bold text-amber-700"
-                >
-                  ✨ The Living Poster Wall (20–30 Multi-Angle)
-                </Link>
-                <Link
-                  to="/gallery-studio"
-                  onClick={() => setMobileOpen(false)}
-                  className="block text-base font-semibold text-neutral-900"
-                >
-                  Gallery Wall Studio (1, 3, 4, 5 Frames)
-                </Link>
-                <Link
-                  to="/custom-frame"
-                  onClick={() => setMobileOpen(false)}
-                  className="block text-base font-semibold text-neutral-800"
-                >
-                  Interactive Custom Frame Visualizer
-                </Link>
+                {/* 3D Studios Section */}
+                <div className="pt-3 border-t border-[#E8E2D8]">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 mb-2">
+                    Interactive 3D Studios
+                  </p>
+                  <div className="space-y-1.5">
+                    <Link
+                      to="/gallery-studio"
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center justify-between p-2 rounded-xl bg-white border border-[#E8E2D8] text-xs font-bold text-neutral-900"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Layers size={15} className="text-amber-700" />
+                        <span>Gallery Wall Studio</span>
+                      </div>
+                      <span className="text-[9px] text-amber-800 bg-amber-50 px-1.5 py-0.2 rounded-full">3D Room</span>
+                    </Link>
+                    <Link
+                      to="/poster-wall"
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center justify-between p-2 rounded-xl bg-white border border-[#E8E2D8] text-xs font-bold text-neutral-900"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Sparkles size={15} className="text-amber-700" />
+                        <span>The Living Poster Wall</span>
+                      </div>
+                      <span className="text-[9px] text-emerald-800 bg-emerald-50 px-1.5 py-0.2 rounded-full">Pack Saver</span>
+                    </Link>
+                    <Link
+                      to="/custom-frame"
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center justify-between p-2 rounded-xl bg-white border border-[#E8E2D8] text-xs font-bold text-neutral-900"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Sliders size={15} className="text-neutral-700" />
+                        <span>Custom Frame Visualizer</span>
+                      </div>
+                      <span className="text-[9px] text-neutral-600 bg-neutral-100 px-1.5 py-0.2 rounded-full">Custom</span>
+                    </Link>
+                  </div>
+                </div>
 
                 <div className="pt-4 border-t border-[#E8E2D8]">
                   <p className="text-xs font-bold uppercase tracking-widest text-neutral-500 mb-3">

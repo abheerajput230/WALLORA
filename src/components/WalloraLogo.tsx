@@ -31,18 +31,18 @@ export const WalloraLogo: React.FC<WalloraLogoProps> = ({
   // Icon Emblem (Geometric Frame with Stylized W and Gold Swoosh)
   const LogoEmblem = ({ size = 38 }: { size?: number }) => (
     <div
-      className="relative shrink-0 rounded-xl overflow-hidden shadow-sm transition-transform duration-300 group-hover:scale-105"
+      className="relative shrink-0 rounded-xl overflow-hidden shadow-sm transition-transform duration-300 group-hover:scale-105 bg-white border border-[#E8E2D8] flex items-center justify-center"
       style={{ width: size, height: size }}
     >
-      {/* Real Brand Logo Image */}
+      {/* Real Brand Logo Cropped Emblem */}
       <img
-        src="/wallora-logo.jpg"
+        src="/wallora-emblem.png"
         alt="WALLORA"
-        className="w-full h-full object-cover"
+        className="w-full h-full object-contain p-0.5"
         onError={(e) => {
-          // Fallback to stylized vector if image fails to load
-          const target = e.target as HTMLElement;
-          target.style.display = 'none';
+          // Fallback to full logo if emblem fails
+          const target = e.target as HTMLImageElement;
+          target.src = '/wallora-logo.jpg';
         }}
       />
 
@@ -99,8 +99,8 @@ export const WalloraLogo: React.FC<WalloraLogoProps> = ({
 
   // Default Navbar Variant
   return (
-    <div className={`flex items-center gap-2.5 select-none ${className}`}>
-      <LogoEmblem size={38} />
+    <div className={`flex items-center gap-3 select-none ${className}`}>
+      <LogoEmblem size={40} />
       <div className="flex flex-col justify-center">
         <span
           className={`font-display text-xl sm:text-2xl font-black tracking-tight leading-none ${
@@ -110,11 +110,11 @@ export const WalloraLogo: React.FC<WalloraLogoProps> = ({
           WALL<span className="text-amber-700">ORA</span>
         </span>
         <span
-          className={`text-[8px] sm:text-[9px] font-bold tracking-[0.2em] uppercase mt-0.5 leading-none ${
+          className={`text-[8px] sm:text-[8.5px] font-bold tracking-[0.22em] uppercase mt-1 leading-none ${
             isDark ? 'text-neutral-400' : 'text-neutral-500'
           }`}
         >
-          FRAMES • POSTERS • ART
+          FRAMES <span className="text-amber-600">•</span> POSTERS <span className="text-amber-600">•</span> WALL ART
         </span>
       </div>
     </div>
