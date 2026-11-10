@@ -99,18 +99,18 @@ export const WalloraLogo: React.FC<WalloraLogoProps> = ({
 
   // Default Navbar Variant
   return (
-    <div className={`flex items-center gap-3 select-none ${className}`}>
-      <LogoEmblem size={40} />
-      <div className="flex flex-col justify-center">
+    <div className={`flex items-center gap-2.5 sm:gap-3 select-none shrink-0 whitespace-nowrap ${className}`}>
+      <LogoEmblem size={38} />
+      <div className="flex flex-col justify-center shrink-0">
         <span
-          className={`font-display text-xl sm:text-2xl font-black tracking-tight leading-none ${
+          className={`font-display text-lg sm:text-xl xl:text-2xl font-black tracking-tight leading-none whitespace-nowrap ${
             isDark ? 'text-white' : 'text-neutral-950'
           }`}
         >
           WALL<span className="text-amber-700">ORA</span>
         </span>
         <span
-          className={`text-[8px] sm:text-[8.5px] font-bold tracking-[0.22em] uppercase mt-1 leading-none ${
+          className={`text-[7.5px] sm:text-[8px] xl:text-[8.5px] font-bold tracking-[0.2em] uppercase mt-0.5 sm:mt-1 leading-none whitespace-nowrap ${
             isDark ? 'text-neutral-400' : 'text-neutral-500'
           }`}
         >

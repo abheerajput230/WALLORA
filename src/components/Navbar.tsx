@@ -82,9 +82,9 @@ const Navbar = () => {
       </div>
 
       {/* Main Sticky Header */}
-      <header className="sticky top-0 z-40 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-[#E8E2D8] transition-all">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between h-18 lg:h-20">
+      <header className="sticky top-0 z-40 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#E8E2D8] transition-all">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-18">
             {/* Mobile menu trigger */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -99,38 +99,35 @@ const Navbar = () => {
               <WalloraLogo variant="navbar" />
             </Link>
 
-            {/* Desktop Navigation - Clean, Elegant & Uncluttered */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+            {/* Desktop Navigation - Clean, Single-Line, Zero-Wrap Luxury Design */}
+            <nav className="hidden lg:flex items-center flex-nowrap gap-3.5 xl:gap-6 2xl:gap-8 shrink-0">
               <Link
                 to="/"
-                className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors py-2"
+                className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors whitespace-nowrap shrink-0 py-2"
               >
                 Home
               </Link>
 
               <Link
                 to="/products?filter=framed"
-                className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors py-2 flex items-center gap-1.5"
+                className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors whitespace-nowrap shrink-0 py-2"
               >
-                <span>Framed Art</span>
-                <span className="px-1.5 py-0.5 text-[9px] font-bold bg-amber-100 text-amber-900 rounded-full uppercase tracking-wider">
-                  Frames
-                </span>
+                Framed Art
               </Link>
 
               <Link
                 to="/products"
-                className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors py-2"
+                className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors whitespace-nowrap shrink-0 py-2"
               >
                 Posters
               </Link>
 
               {/* Categories Mega Dropdown */}
-              <div className="relative" ref={dropdownRef}>
+              <div className="relative shrink-0" ref={dropdownRef}>
                 <button
                   onClick={() => setCategoriesOpen(!categoriesOpen)}
                   onMouseEnter={() => setCategoriesOpen(true)}
-                  className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors flex items-center gap-1 py-2"
+                  className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors whitespace-nowrap flex items-center gap-1 py-2"
                 >
                   <span>Categories</span>
                   <ChevronDown
@@ -187,26 +184,26 @@ const Navbar = () => {
               {/* Combo Packs / Pricing */}
               <a
                 href="/#sizes-matrix"
-                className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors py-2 flex items-center gap-1.5"
+                className="text-xs xl:text-sm font-semibold tracking-wide text-neutral-700 hover:text-neutral-950 transition-colors whitespace-nowrap shrink-0 py-2 flex items-center gap-1.5"
               >
                 <span>Combos</span>
-                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded-full border border-emerald-200/60">
-                  From ₹30
+                <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-1.5 py-0.5 rounded-md border border-emerald-200/70 whitespace-nowrap">
+                  ₹30+
                 </span>
               </a>
 
-              {/* 3D Wall Studios Unified Dropdown (Replaces 3 Clashing Buttons!) */}
-              <div className="relative" ref={studiosRef}>
+              {/* 3D Wall Studios Unified Dropdown */}
+              <div className="relative shrink-0" ref={studiosRef}>
                 <button
                   onClick={() => setStudiosOpen(!studiosOpen)}
                   onMouseEnter={() => setStudiosOpen(true)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-900 bg-white hover:bg-neutral-50 border border-neutral-300 shadow-xs transition-all"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-neutral-900 bg-white hover:bg-neutral-50 border border-neutral-300 shadow-2xs transition-all whitespace-nowrap shrink-0"
                 >
-                  <Sparkles size={12} className="text-amber-600" />
-                  <span>3D Wall Studios</span>
+                  <Sparkles size={12} className="text-amber-600 shrink-0" />
+                  <span className="whitespace-nowrap">3D Studios</span>
                   <ChevronDown
                     size={13}
-                    className={`transition-transform duration-200 ${studiosOpen ? 'rotate-180' : ''}`}
+                    className={`shrink-0 transition-transform duration-200 ${studiosOpen ? 'rotate-180' : ''}`}
                   />
                 </button>
 
@@ -305,15 +302,15 @@ const Navbar = () => {
               </div>
             </nav>
 
-            {/* Right Action Icons - Balanced & Refined */}
-            <div className="flex items-center gap-2 sm:gap-2.5">
+            {/* Right Action Icons - Zero Wrap & Balanced */}
+            <div className="flex items-center flex-nowrap gap-1.5 sm:gap-2.5 shrink-0">
               {/* Search Toggle */}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
                 aria-label="Search"
-                className="p-2 rounded-full text-neutral-700 hover:text-neutral-950 hover:bg-neutral-200/60 transition-colors"
+                className="p-2 rounded-full text-neutral-700 hover:text-neutral-950 hover:bg-neutral-200/60 transition-colors shrink-0"
               >
-                <Search size={19} />
+                <Search size={18} />
               </button>
 
               {/* Instagram Quick Link */}
@@ -323,9 +320,9 @@ const Navbar = () => {
                 rel="noopener noreferrer"
                 title="Follow @bywallora on Instagram"
                 aria-label="Instagram @bywallora"
-                className="p-2 rounded-full text-neutral-700 hover:text-pink-600 hover:bg-neutral-200/60 transition-colors"
+                className="p-2 rounded-full text-neutral-700 hover:text-pink-600 hover:bg-neutral-200/60 transition-colors shrink-0"
               >
-                <Instagram size={19} />
+                <Instagram size={18} />
               </a>
 
               {/* WhatsApp Quick Helpline Pill */}
@@ -334,17 +331,17 @@ const Navbar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Chat with Us on WhatsApp"
-                className="hidden sm:inline-flex items-center gap-1.5 py-1.5 px-3 bg-emerald-50 text-emerald-800 hover:bg-emerald-600 hover:text-white border border-emerald-200 rounded-full text-xs font-semibold transition-all shadow-2xs"
+                className="hidden sm:inline-flex items-center gap-1.5 py-1.5 px-3 bg-emerald-50 text-emerald-800 hover:bg-emerald-600 hover:text-white border border-emerald-200 rounded-full text-xs font-semibold transition-all shadow-2xs whitespace-nowrap shrink-0"
               >
-                <MessageCircle size={14} className="text-emerald-600 group-hover:text-white" />
-                <span>WhatsApp</span>
+                <MessageCircle size={14} className="text-emerald-600 group-hover:text-white shrink-0" />
+                <span className="whitespace-nowrap">WhatsApp</span>
               </a>
 
               {/* Cart Drawer Trigger */}
               <button
                 onClick={() => setIsOpen(true)}
                 aria-label="View Cart"
-                className="relative p-2.5 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 transition-colors shadow-sm flex items-center justify-center ml-1"
+                className="relative p-2.5 rounded-full bg-neutral-900 text-white hover:bg-neutral-800 transition-colors shadow-sm flex items-center justify-center shrink-0 ml-0.5"
               >
                 <ShoppingBag size={18} />
                 {totalItems > 0 && (
