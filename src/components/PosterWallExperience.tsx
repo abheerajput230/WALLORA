@@ -140,7 +140,8 @@ export const PosterWallExperience = ({
       .join('\n');
 
     const message = [
-      `*POSTER_ARENA - Bedroom Poster Wall Kit Order* 🖼️✨`,
+      `*WALLORA - Bedroom Poster Wall Kit Order* 🖼️✨`,
+      `_Turn Your Walls Into Art._`,
       `----------------------------------------`,
       `• *Wall Kit Size:* ${posterCount} Unframed Art Posters`,
       `• *Paper Quality:* 300 GSM Archival Velvet Matte Paper`,
@@ -154,7 +155,7 @@ export const PosterWallExperience = ({
       `• *Savings:* ₹${bundleInfo.savings} OFF!`,
       `• *Shipping:* FREE Express Doorstep Delivery 🚚`,
       `----------------------------------------`,
-      `Hi POSTER_ARENA! I want to order this complete ${posterCount}-Poster Bedroom Wall Collage Kit. Please confirm my order!`,
+      `Hi WALLORA! I want to order this complete ${posterCount}-Poster Bedroom Wall Collage Kit. Please confirm my order!`,
     ].join('\n');
 
     window.open(`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');

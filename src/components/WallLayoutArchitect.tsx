@@ -25,7 +25,8 @@ export const WallLayoutArchitect = ({
 
   const handleOrderWhatsApp = (layout: WallLayoutPreset) => {
     const message = [
-      `*POSTER_ARENA - Wall Layout Kit Order* 🖼️📐`,
+      `*WALLORA - Wall Layout Kit Order* 🖼️📐`,
+      `_Turn Your Walls Into Art._`,
       `----------------------------------------`,
       `• *Wall Template:* ${layout.name}`,
       `• *Posters Included:* ${layout.postersCount} Unframed Art Posters`,
@@ -37,7 +38,7 @@ export const WallLayoutArchitect = ({
       `• *Total Savings:* ₹${layout.savings} OFF!`,
       `• *Shipping:* FREE Express Doorstep Delivery 🚚`,
       `----------------------------------------`,
-      `Hi POSTER_ARENA! I want to order this ${layout.name} (${layout.postersCount} Posters). Please confirm my order!`,
+      `Hi WALLORA! I want to order this ${layout.name} (${layout.postersCount} Posters). Please confirm my order!`,
     ].join('\n');
 
     window.open(`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
@@ -71,7 +72,7 @@ export const WallLayoutArchitect = ({
   const handleMixMatchWhatsApp = () => {
     const prices: Record<number, number> = { 7: 649, 10: 799, 18: 1199, 36: 1999 };
     const price = prices[mixMatchCount] || 1199;
-    const message = `Hi POSTER_ARENA! I want to Mix & Match ${mixMatchCount} A4 Posters at the special bundle price of ₹${price} with Free Nano Tape. Please help me choose designs!`;
+    const message = `Hi WALLORA! I want to Mix & Match ${mixMatchCount} A4 Posters at the special bundle price of ₹${price} with Free Nano Tape. Please help me choose designs!`;
     window.open(`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
   };
 

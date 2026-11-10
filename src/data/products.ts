@@ -681,7 +681,7 @@ export const calculateOriginalPrice = (size: PosterSize, isFramed: boolean): num
 };
 
 // WhatsApp Integration Helpers
-export const STORE_WHATSAPP_NUMBER = '919876543210'; // Shop WhatsApp Number (with country code 91)
+export const STORE_WHATSAPP_NUMBER = '918278224150'; // Shop WhatsApp Number (with country code 91)
 export const FREE_SHIPPING_THRESHOLD = 699;
 export const STANDARD_SHIPPING_COST = 50;
 
@@ -697,7 +697,8 @@ export const generateProductWhatsAppUrl = (
   const framingText = isFramed ? `Framed (${frameColor})` : 'Without Frame (Rolled Print)';
 
   const message = [
-    `*POSTER_ARENA - Order Enquiry* 🖼️`,
+    `*WALLORA - Order Enquiry* 🖼️✨`,
+    `_Turn Your Walls Into Art._`,
     `----------------------------------------`,
     `• *Poster:* ${product.title}`,
     `• *Category:* ${product.category}`,
@@ -707,10 +708,10 @@ export const generateProductWhatsAppUrl = (
     `• *Total Price:* ₹${totalPrice}`,
     `• *Product Link:* ${window.location.origin}/product/${product.id}`,
     `----------------------------------------`,
-    `Hi! I would like to place an order / enquire about delivery time for this poster. Please confirm!`,
+    `Hi WALLORA! I would like to place an order / enquire about delivery for this poster. Please confirm!`,
   ].join('\n');
 
-  return `https://wa.me/${8278224150}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 };
 
 export const generateCartWhatsAppUrl = (
@@ -733,7 +734,8 @@ export const generateCartWhatsAppUrl = (
     : '';
 
   const message = [
-    `*POSTER_ARENA - Cart Order Enquiry* 🛒`,
+    `*WALLORA - Cart Order Enquiry* 🛒✨`,
+    `_Turn Your Walls Into Art._`,
     `----------------------------------------`,
     itemsList,
     `----------------------------------------`,
@@ -742,7 +744,7 @@ export const generateCartWhatsAppUrl = (
     `• *Grand Total:* ₹${grandTotal}`,
     customerDetails,
     `----------------------------------------`,
-    `Hello POSTER_ARENA team! I would like to confirm this order. Please share payment / dispatch details. Thank you!`,
+    `Hello WALLORA team! I would like to confirm this order. Please share payment / dispatch details. Thank you!`,
   ].join('\n');
 
   return `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;

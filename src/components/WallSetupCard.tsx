@@ -51,7 +51,8 @@ export const WallSetupCard = ({ pack }: WallSetupCardProps) => {
 
     const titlesList = pack.sampleTitles.map((t, i) => `${i + 1}. ${t}`).join('\n');
     const message = [
-      `*POSTER_ARENA - Wall Setup Pack Order* 🖼️⚡`,
+      `*WALLORA - Wall Setup Pack Order* 🖼️⚡`,
+      `_Turn Your Walls Into Art._`,
       `----------------------------------------`,
       `• *Wall Pack:* ${pack.title}`,
       `• *Contents:* ${pack.piecesText}`,
@@ -64,7 +65,7 @@ export const WallSetupCard = ({ pack }: WallSetupCardProps) => {
       `• *Special Pack Price:* ₹${pack.price} (MRP: ₹${pack.originalPrice})`,
       `• *Shipping:* FREE Express Doorstep Delivery 🚚`,
       `----------------------------------------`,
-      `Hi POSTER_ARENA! I want to order this ${pack.title}. Please confirm availability!`,
+      `Hi WALLORA! I want to order this ${pack.title}. Please confirm availability!`,
     ].join('\n');
 
     window.open(`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');

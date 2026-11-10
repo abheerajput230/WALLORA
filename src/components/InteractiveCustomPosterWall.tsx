@@ -247,7 +247,8 @@ export const InteractiveCustomPosterWall = ({
     const heroPoster = wallPosters[0];
 
     const message = [
-      `*POSTER_ARENA - Custom Bedroom Wall Kit Order* 🖼️✨`,
+      `*WALLORA - Custom Bedroom Wall Kit Order* 🖼️✨`,
+      `_Turn Your Walls Into Art._`,
       `----------------------------------------`,
       `• *Wall Kit Size:* ${posterCount} Posters (Custom Curated Wall)`,
       `• *Wall Layout:* ${wallShape.toUpperCase()} Organic Layout`,
@@ -262,7 +263,7 @@ export const InteractiveCustomPosterWall = ({
       `• *Savings:* ₹${pricing.savings} OFF!`,
       `• *Shipping:* FREE Express Doorstep Delivery 🚚`,
       `----------------------------------------`,
-      `Hi POSTER_ARENA! I customized my own ${posterCount}-Poster Wall on the website. Please confirm my order!`,
+      `Hi WALLORA! I customized my own ${posterCount}-Poster Wall on the website. Please confirm my order!`,
     ].filter(Boolean).join('\n');
 
     window.open(

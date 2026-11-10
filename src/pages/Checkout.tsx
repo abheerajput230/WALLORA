@@ -50,7 +50,7 @@ const Checkout = () => {
             Order Received!
           </h1>
           <p className="text-xs sm:text-sm text-neutral-600 mb-6 leading-relaxed">
-            Thank you for choosing <strong>POSTER_ARENA</strong>. We have received your order enquiry and our packaging team is preparing your prints. You will receive tracking details via SMS/WhatsApp within 24 hours.
+            Thank you for choosing <strong>WALLORA</strong>. We have received your order enquiry and our packaging team is preparing your prints. You will receive tracking details via SMS/WhatsApp within 24 hours.
           </p>
           <Link
             to="/"

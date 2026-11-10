@@ -15,7 +15,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
       {/* Floating WhatsApp Help Button */}
       <a
-        href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hi%20POSTER_ARENA!%20I%20need%20help%20choosing%20a%20poster`}
+        href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hi%20WALLORA!%20I%20need%20help%20choosing%20a%20poster`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"

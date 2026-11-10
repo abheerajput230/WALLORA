@@ -214,7 +214,8 @@ export const GalleryWallStudio = () => {
       .join('\n');
 
     const message = [
-      `*POSTER_ARENA - Custom Multi-Frame Gallery Wall Order* 🖼️✨`,
+      `*WALLORA - Custom Multi-Frame Gallery Wall Order* 🖼️✨`,
+      `_Turn Your Walls Into Art._`,
       `----------------------------------------`,
       `• *Layout:* ${bundle.label} (${bundle.count} Frames)`,
       `• *Frame Moulding:* ${frameName}`,
@@ -228,7 +229,7 @@ export const GalleryWallStudio = () => {
       `• *Shipping:* FREE Express Doorstep Delivery 🚚`,
       `• *Includes:* Pre-installed Sawtooth Wall Hooks + Acrylic Glass`,
       `----------------------------------------`,
-      `Hi POSTER_ARENA! I have configured this live multi-frame gallery wall in the studio. Please confirm my order!`,
+      `Hi WALLORA! I have configured this live multi-frame gallery wall in the studio. Please confirm my order!`,
     ].join('\n');
 
     window.open(`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');

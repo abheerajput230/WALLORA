@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, ShoppingBag, Menu, X, ChevronDown, MessageCircle, Sparkles, Sliders, Layers } from 'lucide-react';
+import { Search, ShoppingBag, Menu, X, ChevronDown, MessageCircle, Sparkles, Sliders, Layers, Instagram } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/context/CartContext';
 import { CATEGORIES_LIST, STORE_WHATSAPP_NUMBER } from '@/data/products';
 import { getRawCategories } from '@/data/rawPosters';
+import WalloraLogo, { INSTAGRAM_URL } from '@/components/WalloraLogo';
 
 const Navbar = () => {
   const [categoriesOpen, setCategoriesOpen] = useState(false);
@@ -48,19 +49,29 @@ const Navbar = () => {
       <div className="bg-neutral-900 text-neutral-200 text-xs py-2 px-4 font-body tracking-wider text-center border-b border-neutral-800">
         <div className="container mx-auto flex items-center justify-between">
           <span className="hidden sm:inline-flex items-center gap-1.5 text-amber-400 font-medium">
-            <Sparkles size={13} /> Museum Grade 300 GSM Prints
+            <Sparkles size={13} /> Museum Grade 300 GSM Prints & Custom Frames
           </span>
           <p className="mx-auto text-[11px] sm:text-xs">
             Free Shipping on Orders Over <span className="font-bold text-white">₹699</span> • Safe Tube & Box Packaging
           </p>
-          <a
-            href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hi%20POSTER_ARENA!%20I%20have%20an%20enquiry`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-medium transition-colors"
-          >
-            <MessageCircle size={13} /> WhatsApp Help
-          </a>
+          <div className="hidden md:flex items-center gap-4">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-pink-400 hover:text-pink-300 font-medium transition-colors"
+            >
+              <Instagram size={13} /> @bywallora
+            </a>
+            <a
+              href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hi%20WALLORA!%20I%20have%20an%20enquiry`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-medium transition-colors"
+            >
+              <MessageCircle size={13} /> WhatsApp
+            </a>
+          </div>
         </div>
       </div>
 
@@ -77,11 +88,9 @@ const Navbar = () => {
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
 
-            {/* Logo */}
+            {/* Wallora Logo */}
             <Link to="/" className="flex items-center gap-2 group">
-              <span className="font-display text-2xl lg:text-3xl font-black tracking-tight text-neutral-900 group-hover:opacity-90 transition-opacity">
-                POSTER<span className="text-amber-700 italic font-normal">_ARENA</span>
-              </span>
+              <WalloraLogo variant="navbar" />
             </Link>
 
             {/* Desktop Navigation */}
@@ -204,9 +213,21 @@ const Navbar = () => {
                 <Search size={20} />
               </button>
 
+              {/* Instagram Quick Link */}
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Follow @bywallora on Instagram"
+                aria-label="Instagram @bywallora"
+                className="p-2.5 rounded-full text-neutral-800 hover:text-pink-600 hover:bg-neutral-200/50 transition-colors"
+              >
+                <Instagram size={20} />
+              </a>
+
               {/* WhatsApp Quick Link */}
               <a
-                href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hello%20POSTER_ARENA!%20I%20have%20an%20order%20enquiry.`}
+                href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hello%20WALLORA!%20I%20have%20an%20order%20enquiry.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Chat with Us on WhatsApp"
@@ -330,12 +351,21 @@ const Navbar = () => {
                   </div>
                 </div>
 
-                <div className="pt-4">
+                <div className="pt-4 space-y-2">
                   <a
-                    href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hi%20POSTER_ARENA!%20I%20have%20an%20enquiry.`}
+                    href={INSTAGRAM_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 bg-emerald-600 text-white rounded-xl text-center text-sm font-semibold flex items-center justify-center gap-2"
+                    className="w-full py-3 bg-gradient-to-r from-purple-600 via-pink-600 to-amber-600 text-white rounded-xl text-center text-xs font-bold flex items-center justify-center gap-2 shadow-sm"
+                  >
+                    <Instagram size={17} /> Follow @bywallora on Instagram
+                  </a>
+
+                  <a
+                    href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hi%20WALLORA!%20I%20have%20an%20enquiry.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3 bg-emerald-600 text-white rounded-xl text-center text-sm font-semibold flex items-center justify-center gap-2 shadow-sm"
                   >
                     <MessageCircle size={18} /> Chat on WhatsApp
                   </a>

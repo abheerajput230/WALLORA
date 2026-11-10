@@ -149,7 +149,7 @@ export const SizesPricingBreakdownMatrix = () => {
   // Helper to generate WhatsApp URL for a specific size enquiry
   const handleWhatsAppEnquiry = (size: string, isFramed: boolean, price: number) => {
     const text = encodeURIComponent(
-      `Hi POSTER_ARENA! 🖼️ I am looking for *${size}* posters (${isFramed ? 'Ready-to-hang Framed' : 'Unframed 300 GSM Print'}).\n• Price shown: ₹${price}\nCan you show me the best selling posters available in this size?`
+      `Hi WALLORA! 🖼️✨ I am looking for *${size}* posters (${isFramed ? 'Ready-to-hang Framed' : 'Unframed 300 GSM Print'}).\n• Price shown: ₹${price}\nCan you show me the best selling posters available in this size?`
     );
     window.open(`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${text}`, '_blank', 'noopener,noreferrer');
   };
@@ -353,7 +353,7 @@ export const SizesPricingBreakdownMatrix = () => {
         </div>
 
         {/* =========================================================================
-            TRANSPARENCY BENCHMARK: POSTER_ARENA vs. OTHER ONLINE WEBSITES
+            TRANSPARENCY BENCHMARK: WALLORA vs. OTHER ONLINE WEBSITES
             ========================================================================= */}
         <div className="max-w-5xl mx-auto rounded-3xl bg-white border border-[#E8E2D8] overflow-hidden shadow-lg">
           <div className="bg-neutral-950 text-white p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -366,7 +366,7 @@ export const SizesPricingBreakdownMatrix = () => {
                 Why Are Our Prices So Much Lower Than Other Websites?
               </h3>
               <p className="text-xs sm:text-sm text-neutral-300 mt-1 max-w-2xl">
-                Most poster websites are middlemen or dropshippers who buy from 3rd-party digital labs and add heavy markups. POSTER_ARENA owns its direct commercial printing machines and framing workshop.
+                Most poster websites are middlemen or dropshippers who buy from 3rd-party digital labs and add heavy markups. WALLORA owns its direct commercial printing machines and framing workshop.
               </p>
             </div>
             <div className="shrink-0 flex items-center gap-2">
@@ -384,7 +384,7 @@ export const SizesPricingBreakdownMatrix = () => {
                 <tr className="border-b border-neutral-200 bg-[#FAF8F5] text-xs font-bold text-neutral-700 uppercase tracking-wider">
                   <th className="py-4 px-6">Feature / Specification</th>
                   <th className="py-4 px-6 text-neutral-500">Other Online Websites (Amazon / Redwolf / Pyari Walls)</th>
-                  <th className="py-4 px-6 text-amber-800 bg-amber-50/60 font-black">POSTER_ARENA Direct</th>
+                  <th className="py-4 px-6 text-amber-800 bg-amber-50/60 font-black">WALLORA Direct</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-neutral-100 text-xs sm:text-sm">

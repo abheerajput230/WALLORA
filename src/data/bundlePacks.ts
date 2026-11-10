@@ -195,7 +195,8 @@ export const getBundlePriceForCount = (count: number) => {
 // Generate WhatsApp order message for a bundle pack
 export const generateBundleWhatsAppUrl = (pack: PosterBundlePack) => {
   const message = [
-    `*POSTER_ARENA - A4 Poster Pack Order* 🖼️⚡`,
+    `*WALLORA - A4 Poster Pack Order* 🖼️⚡`,
+    `_Turn Your Walls Into Art._`,
     `----------------------------------------`,
     `• *Bundle Pack:* ${pack.name} (${pack.count} Posters - 9x12 Inch)`,
     `• *Tagline:* ${pack.tagline}`,
@@ -207,7 +208,7 @@ export const generateBundleWhatsAppUrl = (pack: PosterBundlePack) => {
     `----------------------------------------`,
     `• *Pack Price:* ₹${pack.price} (MRP: ₹${pack.mrp})`,
     `----------------------------------------`,
-    `Hi POSTER_ARENA! I want to order this ${pack.count} A4 Poster Pack (₹${pack.price}). Please send me the catalog to choose my favorite designs!`,
+    `Hi WALLORA! I want to order this ${pack.count} A4 Poster Pack (₹${pack.price}). Please send me the catalog to choose my favorite designs!`,
   ].filter(Boolean).join('\n');
 
   return `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;

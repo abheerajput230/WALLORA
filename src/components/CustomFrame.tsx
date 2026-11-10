@@ -310,7 +310,7 @@ export default function FramePreview() {
     }
   };
 
-  const handleOrderNow = () => { window.open("https://www.instagram.com/poster_arena/", "_blank"); }; const handleDmClick = () => { window.open("https://www.instagram.com/poster_arena/", "_blank"); };
+  const handleOrderNow = () => { window.open("https://www.instagram.com/bywallora?utm_source=qr&srtk=ZGY2enZ0NXRnOXhz", "_blank"); }; const handleDmClick = () => { window.open("https://www.instagram.com/bywallora?utm_source=qr&srtk=ZGY2enZ0NXRnOXhz", "_blank"); };
 
 
   return (
@@ -698,7 +698,7 @@ export default function FramePreview() {
                     className="h-10 w-10 rounded-full"
                   />
                   <div>
-                    <p className="text-sm font-semibold text-gray-900">Poster Praise Support</p>
+                    <p className="text-sm font-semibold text-gray-900">WALLORA Support</p>
                     <p className="text-xs text-green-600">Online</p>
                   </div>
                 </div>

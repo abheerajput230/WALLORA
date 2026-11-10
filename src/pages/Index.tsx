@@ -471,7 +471,7 @@ const Index = () => {
 
           <div className="text-center mt-12">
             <a
-              href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hi%20POSTER_ARENA!%20I%20want%20to%20order%20a%20poster`}
+              href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hi%20WALLORA!%20I%20want%20to%20order%20custom%20frames%20or%20posters`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-sm font-bold shadow-md transition-colors"

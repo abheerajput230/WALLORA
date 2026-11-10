@@ -113,7 +113,7 @@ const PosterWallPage = () => {
             {/* Quick Action: WhatsApp Helpline */}
             <div className="flex items-center gap-2">
               <a
-                href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hi%20POSTER_ARENA!%20I%20want%20to%20order%20a%20Wall%20Setup%20Pack`}
+                href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hi%20WALLORA!%20I%20want%20to%20order%20a%20Wall%20Setup%20Pack`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="py-2 px-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition-colors"

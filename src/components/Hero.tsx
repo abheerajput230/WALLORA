@@ -20,7 +20,7 @@ const Hero = () => {
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100/80 border border-amber-200/80 text-amber-900 text-xs font-bold tracking-wider uppercase"
             >
               <Sparkles size={13} className="text-amber-700" />
-              <span>Premium Modern Wall Art Studio</span>
+              <span>WALLORA • Turn Your Walls Into Art</span>
             </motion.div>
 
             <motion.h1
@@ -105,7 +105,7 @@ const Hero = () => {
               </Link>
 
               <a
-                href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hi%20POSTER_ARENA!%20I%20want%20to%20order%20a%20poster`}
+                href={`https://wa.me/${STORE_WHATSAPP_NUMBER}?text=Hi%20WALLORA!%20I%20want%20to%20order%20a%20poster`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-5 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl text-sm transition-colors shadow-sm flex items-center gap-2"
