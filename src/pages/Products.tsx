@@ -200,6 +200,68 @@ const Products = () => {
         {/* =========================================================================
             INTERACTIVE FRAME CUSTOMIZER BAR (Live Global Frame Finish Switcher!)
             ========================================================================= */}
+        <div className="mb-6 p-4 sm:p-5 rounded-2xl bg-white border border-[#E8E2D8] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <span className="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-800 flex items-center justify-center shrink-0">
+              <Layers size={18} />
+            </span>
+            <div>
+              <h3 className="text-xs sm:text-sm font-bold text-neutral-900 flex items-center gap-1.5">
+                <span>Live Frame Finish Preview</span>
+                <span className="text-[10px] font-semibold text-amber-800 bg-amber-50 px-2 py-0.5 rounded-full">
+                  All Artworks
+                </span>
+              </h3>
+              <p className="text-[11px] text-neutral-500 mt-0.5">
+                Switch real wooden finishes and mat borders in real-time across the entire catalog
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2.5">
+            {/* 4 Real Frame Finishes */}
+            <div className="inline-flex p-1 bg-[#FAF8F5] border border-neutral-200 rounded-xl gap-1">
+              {[
+                { id: 'black', label: 'Matte Black', color: '#171717' },
+                { id: 'wood', label: 'Natural Oak', color: '#C19A6B' },
+                { id: 'white', label: 'Studio White', color: '#FFFFFF', border: true },
+                { id: 'gold', label: 'Champagne Gold', color: '#D4AF37' },
+              ].map(f => (
+                <button
+                  key={f.id}
+                  onClick={() => setGlobalFrameColor(f.id as any)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-2 transition-all ${
+                    globalFrameColor === f.id
+                      ? 'bg-neutral-900 text-white shadow-xs'
+                      : 'text-neutral-700 hover:text-neutral-950 hover:bg-white/80'
+                  }`}
+                >
+                  <span
+                    className="w-3.5 h-3.5 rounded-full shrink-0 shadow-2xs"
+                    style={{
+                      backgroundColor: f.color,
+                      border: f.border ? '1px solid #D4D4D4' : 'none',
+                    }}
+                  />
+                  <span>{f.label}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Passe-Partout Mat Toggle */}
+            <button
+              onClick={() => setWithMat(!withMat)}
+              className={`px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 border transition-all ${
+                withMat
+                  ? 'bg-amber-100/70 border-amber-300 text-amber-950 font-bold shadow-2xs'
+                  : 'bg-white border-neutral-200 text-neutral-700 hover:bg-[#FAF8F5]'
+              }`}
+            >
+              <span className={`w-3.5 h-3.5 rounded-sm border ${withMat ? 'bg-white border-amber-600' : 'bg-neutral-100 border-neutral-300'}`} />
+              <span>Passe-Partout Mat: {withMat ? 'ON' : 'OFF'}</span>
+            </button>
+          </div>
+        </div>
 
 
         {/* =========================================================================
