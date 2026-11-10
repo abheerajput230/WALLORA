@@ -64,7 +64,7 @@ const PosterWallPage = () => {
     if (selectedFormat === 'split-3') return { count: 15, shape: 'stairs' as WallShape };
     if (selectedFormat === 'split-4') return { count: 20, shape: 'hero-focus' as WallShape };
     if (selectedFormat === 'split-5') return { count: 25, shape: 'diamond' as WallShape };
-    if (selectedFormat === 'split-8') return { count: 32, shape: 'diamond' as WallShape };
+    if (selectedFormat === 'split-8') return { count: 32, shape: 'v-shape' as WallShape };
     if (selectedFormat === 'single') return { count: 24, shape: 'random-organic' as WallShape };
     return { count: 20, shape: 'hero-focus' as WallShape };
   }, [activePreviewSource, selectedFormat, selectedLayoutPreset]);
